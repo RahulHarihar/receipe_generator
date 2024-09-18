@@ -1,5 +1,5 @@
 // Spoonacular API settings
-const API_KEY = 'd62bc3cd20134583a71b2f10b1eeef33';
+const API_KEY = '*******************************';
 const API_URL = 'https://api.spoonacular.com/recipes/findByIngredients';
 
 // DOM Elements
