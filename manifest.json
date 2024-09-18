@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Smart Recipe Assistant",
+    "version": "1.0",
+    "description": "Get recipe suggestions based on the ingredients you have.",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "icon.jpg",
+        "48": "icon.jpg",
+        "128": "icon.jpg"
+      }
+    },
+    "permissions": ["storage", "activeTab", "scripting"],
+   
+    "icons": {
+      "16": "icon.jpg",
+      "48": "icon.jpg",
+      "128": "icon.jpg"
+    }
+  }
+  
