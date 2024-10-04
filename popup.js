@@ -1,48 +1,53 @@
-// Spoonacular API settings
-const API_KEY = '*******************************';
-const API_URL = 'https://api.spoonacular.com/recipes/findByIngredients';
+document.getElementById("get-recipes").addEventListener("click", function () {
+	const ingredients = document.getElementById("ingredients").value;
+	if (!ingredients) {
+		alert("Please enter some ingredients.");
+		return;
+	}
 
-// DOM Elements
-const ingredientsInput = document.getElementById('ingredients');
-const getRecipesButton = document.getElementById('get-recipes');
-const recipesContainer = document.getElementById('recipes');
+	// Show loading spinner
+	const spinner = document.getElementById("loading-spinner");
+	spinner.classList.add("active");
 
-// Function to fetch recipes from the Spoonacular API
-async function getRecipes(ingredients) {
-  try {
-    const response = await fetch(`${API_URL}?ingredients=${ingredients}&number=5&apiKey=${API_KEY}`);
-    const data = await response.json();
-    displayRecipes(data);
-  } catch (error) {
-    console.error('Error fetching recipes:', error);
-  }
-}
+	// Clear previous results
+	document.getElementById("recipes-container").innerHTML = "";
+	document.getElementById("error-message").classList.add("hidden");
 
-// Function to display recipes on the popup
-function displayRecipes(recipes) {
-  recipesContainer.innerHTML = ''; // Clear previous recipes
+	// Fetch recipes from API
+	fetch(
+		`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=d62bc3cd20134583a71b2f10b1eeef33 `
+	)
+		.then((response) => response.json())
+		.then((data) => {
+			// Hide loading spinner
+			spinner.classList.remove("active");
 
-  recipes.forEach(recipe => {
-    const recipeDiv = document.createElement('div');
-    recipeDiv.className = 'recipe';
+			if (data.length === 0) {
+				document.getElementById("error-message").innerText =
+					"No recipes found.";
+				document.getElementById("error-message").classList.remove("hidden");
+				return;
+			}
 
-    recipeDiv.innerHTML = `
-      <h3>${recipe.title}</h3>
-      <img src="${recipe.image}" alt="${recipe.title}">
-      <p>Ingredients used: ${recipe.usedIngredientCount}, Missing: ${recipe.missedIngredientCount}</p>
-      <a href="https://spoonacular.com/recipes/${recipe.title.replace(/ /g, '-').toLowerCase()}-${recipe.id}" target="_blank">View Recipe</a>
-    `;
+			// Populate recipes
+			data.forEach((recipe) => {
+				const recipeCard = document.createElement("div");
+				recipeCard.className = "recipe-card";
 
-    recipesContainer.appendChild(recipeDiv);
-  });
-}
+				recipeCard.innerHTML = `
+                  <img src="${recipe.image}" class="recipe-image" alt="${recipe.title}">
+                  <h3 class="recipe-title">${recipe.title}</h3>
+                  <a href="https://spoonacular.com/recipes/${recipe.id}" class="view-recipe-btn" target="_blank">View Recipe</a>
+              `;
 
-// Event Listener for the 'Get Recipes' button
-getRecipesButton.addEventListener('click', () => {
-  const ingredients = ingredientsInput.value;
-  if (ingredients) {
-    getRecipes(ingredients);
-  } else {
-    alert('Please enter some ingredients.');
-  }
+				document.getElementById("recipes-container").appendChild(recipeCard);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching data:", error);
+			spinner.classList.remove("active");
+			document.getElementById("error-message").innerText =
+				"Error fetching recipes.";
+			document.getElementById("error-message").classList.remove("hidden");
+		});
 });
