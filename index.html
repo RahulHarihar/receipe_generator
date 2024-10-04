@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Recipe Assistant</title>
-  <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-  <h1>Smart Recipe Assistant</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Smart Recipe Assistant</title>
+		<link rel="stylesheet" href="popup.css" />
+	</head>
+	<body>
+		<h1>Smart Recipe Assistant</h1>
 
-  <div class="ingredient-input">
-    <label for="ingredients">Enter Ingredients (comma-separated):</label>
-    <input type="text" id="ingredients" placeholder="e.g., chicken, rice, tomato">
-    <button id="get-recipes">Get Recipes</button>
-  </div>
+		<header class="header">
+			<h1 class="app-title">Smart Recipe Assistant</h1>
+		</header>
 
-  <div id="recipes"></div>
+		<div class="input-section">
+			<label for="ingredients" class="label">Enter ingredients:</label>
+			<input
+				type="text"
+				id="ingredients"
+				class="input"
+				placeholder="e.g., tomato, onion, chicken" />
+			<button id="get-recipes" class="button">🔍 Find Recipes</button>
+		</div>
 
-  <script src="popup.js"></script>
-</body>
+		<div id="loading-spinner" class="spinner">
+			<div class="double-bounce1"></div>
+			<div class="double-bounce2"></div>
+		</div>
+
+		<div id="error-message" class="error hidden"></div>
+
+		<div id="recipes-container" class="mt-4">
+			<!-- Recipe cards will be appended here -->
+		</div>
+
+		<script src="popup.js"></script>
+	</body>
 </html>
