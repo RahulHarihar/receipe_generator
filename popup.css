@@ -1,57 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-    width: 300px;
-  }
-  
-  h1 {
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  .ingredient-input {
-    margin-bottom: 20px;
-  }
-  
-  #ingredients {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .recipe {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .recipe img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .recipe a {
-    display: block;
-    margin-top: 10px;
-    color: #4CAF50;
-    text-decoration: none;
-  }
-  
-  .recipe a:hover {
-    text-decoration: underline;
-  }
-  
+	font-family: "Roboto", sans-serif;
+	background-color: #f4f4f4;
+	padding: 1rem;
+}
+
+.header {
+	text-align: center;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.input-section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.input {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
+	width: 100%;
+}
+
+.button {
+	padding: 0.5rem;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+}
+
+.recipe-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+	background-color: white;
+	border-radius: 0.5rem;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 1rem;
+}
+
+.recipe-image {
+	width: 100%;
+	border-radius: 0.5rem;
+	height: 200px;
+	object-fit: cover;
+}
+
+.view-recipe-btn {
+	margin-top: 1rem;
+	background-color: #28a745;
+	color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	text-decoration: none;
+}
+
+.spinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+}
+
+.error {
+	color: red;
+	text-align: center;
+}
